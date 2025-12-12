@@ -16,15 +16,61 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap" rel="stylesheet">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <body class="bg-linear-to-br from-blue-900 to-purple-600 ">
+    <nav class="w-full flex justify-between">
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+      <div class="px-2 py-4 font-bold">
+        <h1 class="font-pacifico text-white text-3xl"> Chefin </h1>
+      </div>
+
+      <ul class="w-full flex justify-end">
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Home", :root %> </li>
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", "#" %> </li>
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Discover", "#" %> </li>
+      </ul>
+
+    </nav>
+
+    <main class="container mx-auto mt-10 px-5 flex h-full max-h-full">
       <%= yield %>
     </main>
+
+    <footer class="relative bottom-0 w-full m-auto py-5 flex justify-center">
+      <div class="h-8"></div>
+      <div class="grid gap-6 pt-8 border-t border-gray-800 lg:grid-cols-3">
+        <div>
+          <p class="font-semibold text-white">Made with love</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Delectus labor.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">It's easy to start</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+              amet consectetur.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">Share your favourite recipes</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+              amet consectetur.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
-</html>
+
