@@ -1,0 +1,31 @@
+<div class="container w-full">
+  <div class="w-full flex flex-col justify-around">
+    <h1 class="font-bold text-center text-4xl text-white">My Recipes</h1>
+  </div>
+
+  <% unless @recipes.empty? %>
+    <div class="flex justify-around w-full">
+      <h2 class="text-white text-2xl"> Recents </h2>
+    </div>
+
+    <div class="w-full flex flex-row ">
+      <% @recipes.each do |recipe| %>
+        <div>
+          <%= render partial: "recipe_card", locals: {recipe: recipe} %>
+        </div>
+      <% end %>
+    </div>
+
+  <% else %> 
+    <div class="w-full flex flex-col justify-around">
+      <div class="flex justify-around w-full">
+        <h2 class="text-white text-2xl"> You don't seem to have any recipes yet, let's fix that!!! </h2>
+      </div>
+      <div class="flex justify-around w-full">
+        <%= link_to "New Recipe", :new_recipe, class: "p-2 rounded-md text-white text-xl active:bg-purple-500 bg-blue-400" %>
+      </div>
+    </div>
+
+  <% end %>
+  
+</div>

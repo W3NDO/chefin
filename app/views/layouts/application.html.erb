@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body class="bg-blue-900 ">
-    <nav class="w-full flex justify-between fixed top-0">
+    <nav class="w-full flex justify-between mb-6">
 
       <div class="px-2 py-4 font-bold">
         <h1 class="font-pacifico text-white text-3xl"> Chefin </h1>
@@ -30,7 +30,7 @@
 
       <ul class="w-full flex justify-end">
         <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Home", :root %> </li>
-        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", "#" %> </li>
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", :recipes %> </li>
         <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Discover", "#" %> </li>
       </ul>
 
@@ -40,7 +40,7 @@
       <%= yield %>
     </main>
 
-    <footer class="fixed bottom-0 w-full m-auto py-5 flex justify-center">
+    <footer class=" w-full m-auto py-5 flex justify-center">
       <div class="h-8"></div>
       <div class="grid gap-6 pt-8 border-t border-gray-800 lg:grid-cols-3">
         <div>
