@@ -8,7 +8,7 @@
       <h2 class="text-white text-2xl"> Recents </h2>
     </div>
 
-    <div class="w-full flex flex-row ">
+    <div class="w-full flex flex-row flex-wrap gap-4 ">
       <% @recipes.each do |recipe| %>
         <div>
           <%= render partial: "recipe_card", locals: {recipe: recipe} %>
