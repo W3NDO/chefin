@@ -11,9 +11,16 @@
     </p>
 
     <div class="flex justify-around items-center" >
-      <button class="p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-blue-400" type="button">
-        Get Started
-      </button />
+      <% if @current_user %>
+        <%= link_to :root, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-blue-400" do %>
+          My Recipes
+        <% end %>
+      <% else %>
+        <%= link_to :new_user_registration, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-blue-400" do %>
+          Get Started
+        <% end %>
+
+      <% end %>
     </div>
 
     <div class="grid gap-8 md:grid-cols-2">
