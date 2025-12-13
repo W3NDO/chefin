@@ -56,3 +56,5 @@ end
 RANDOM_RECIPES.each do |name, desc|
   create_recipe_with_ingredients_and_steps(name, desc)
 end
+
+User.create(email: "foobar@example.com", password: "foobar123", password_confirmation: "foobar123")

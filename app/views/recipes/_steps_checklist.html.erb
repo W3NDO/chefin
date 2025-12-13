@@ -1,3 +1,12 @@
-<div>
-    <%= steps %>
+<div class="w-full m-2">
+    <% steps.each_with_index do |step, idx|  %>
+        <div class="w-full p-2 flex justify-start">
+            <div class="w-full flex justify-between items-center">
+                <div class="w-full flex justify-start">
+                    <span class="font-bold text-gray-400"> <%= " #{idx} "%> </span>
+                    <p class="text-white text-xl px-2"> <%= "#{ step.instruction }" %> </p>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>

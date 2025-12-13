@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.includes(:ingredients, :steps).find(params[:id])
     @ingredients = @recipe.ingredients.map{ |i| i }
-    @steps = @recipe.steps.map{ |s| "#{s.instruction}"}
+
+    @steps = @recipe.steps
   end
 
   def update
