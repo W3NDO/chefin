@@ -8,13 +8,13 @@
       <h2 class="text-white text-2xl"> Recents </h2>
     </div>
 
-    <div class="w-full flex flex-row flex-wrap gap-4 ">
+  <div class="flex justify-around">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
       <% @recipes.each do |recipe| %>
-        <div>
-          <%= render partial: "recipe_card", locals: {recipe: recipe} %>
-        </div>
+        <%= render partial: "recipe_card", locals: { recipe: recipe } %>
       <% end %>
     </div>
+  </div>
 
   <% else %> 
     <div class="w-full flex flex-col justify-around">

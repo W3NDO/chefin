@@ -1,4 +1,4 @@
-<div class="flex justify-around w-full" >
+<div class="flex flex-col justify-around w-full" >
     <div class="flex justify-around w-full"> 
         <div class="">
             <p class="text-2xl text-white"> <%= @recipe.name %> </p>
@@ -10,7 +10,16 @@
         </div>
     </div>
 
+    <hr class="m-2"/>
     <div>
-
+        <span class="text-xl text-white font-bold"> Required Ingredients </span>
+        <%= render partial: "ingredients_checklist", locals: {ingredients: @ingredients} %>
     </div>
+
+    <hr class="m-2"/>
+    <div>
+        <span class="text-xl text-white font-bold"> Steps </span>
+        <%= render partial: "steps_checklist", locals: {steps: @steps} %>
+    </div>
+    
 </div>
