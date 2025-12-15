@@ -1,0 +1,2 @@
+module CookingSessionHelper
+end

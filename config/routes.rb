@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-
   authenticated :user do
     resources :recipes
+    get "cooking_session/show"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

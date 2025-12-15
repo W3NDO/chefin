@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [ :index ]
   def index
     @recipes = Recipe.all.reverse
     @recipes
@@ -9,7 +10,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.includes(:ingredients, :steps).find(params[:id])
-    @ingredients = @recipe.ingredients.map{ |i| i }
+    @ingredients = @recipe.ingredients.map { |i| i }
 
     @steps = @recipe.steps
   end

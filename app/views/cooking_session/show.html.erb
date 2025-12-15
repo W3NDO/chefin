@@ -1,0 +1,21 @@
+<div>
+  <div class="w-full h-full">
+
+    <div>
+      <%= render partial: "prep", locals: {recipe: @recipe} %>
+    </div>
+
+    <div class="w-full flex justify-between">
+    
+      <button type="button" class="p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400">
+        Previous
+      </button>
+
+      <button type="button" class="m-1 p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400">
+        Next
+      </button>
+    
+    </div>
+
+  </div>
+</div>
