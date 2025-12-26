@@ -9,26 +9,26 @@
 #   end
 
 RANDOM_RECIPES = name_desc = {
-    :"Classic Beef Lasagna" => "A layered Italian dish involving pasta sheets, rich meat sauce (ragu), béchamel sauce, and mozzarella and ricotta cheeses. (Techniques: sauce making, layering, baking).",
-    :"Homemade Pad Thai" => "A popular Thai stir-fried rice noodle dish typically featuring shrimp or chicken, tofu, peanuts, bean sprouts, and a tangy tamarind sauce. (Techniques: stir-frying, sauce balancing).",
-    :"Chicken Tikka Masala" => "An iconic Indian-British dish where marinated, grilled chicken pieces are served in a rich, creamy, and spiced tomato sauce. (Techniques: marinating, grilling/broiling, simmering sauce).",
-    :"Sourdough Bread (Basic Loaf)" => "A foundational baking recipe requiring the use of a sourdough starter, long fermentation, and specific kneading and baking techniques. (Techniques: leavening, fermentation, high-heat baking).",
-    :"New York Cheesecake" => "A dense, smooth, and creamy dessert baked on a graham cracker crust, often using a water bath for even cooking. (Techniques: crust making, precision baking, chilling/setting).",
-    :"French Onion Soup (Soupe à l'Oignon Gratinée)" => "A deep, savory beef broth soup featuring slow-caramelized onions, topped with a large crouton and melted Gruyère cheese. (Techniques: slow caramelization, stock reduction, broiling/gratinéing).",
-    :"Spicy Black Bean Burgers" => "A vegetarian alternative that requires making a patty binder (often oats or breadcrumbs) and balancing the texture before pan-frying or baking. (Techniques: food processing/mixing, pan-frying/baking).",
-    :"Authentic Paella Valenciana" => "A Spanish rice dish cooked in a wide, shallow pan, incorporating chicken, rabbit, vegetables, saffron, and a key technique for achieving the crunchy bottom layer ('socarrat'). (Techniques: simmering, specialized heat management).",
-    :"Basic Vinaigrette Dressing" => "A foundational recipe showing the precise ratio and emulsification technique required to blend oil, vinegar, and seasonings. (Techniques: emulsification, whisking).",
-    :"Slow-Cooker Pulled Pork" => "A hands-off recipe detailing the rub application, cooking time, and shredding technique to achieve tender, barbecue-ready pork shoulder. (Techniques: slow cooking/braising, dry rub application)."
+    "Classic Beef Lasagna" => "A layered Italian dish involving pasta sheets, rich meat sauce (ragu), béchamel sauce, and mozzarella and ricotta cheeses. (Techniques: sauce making, layering, baking).",
+    "Homemade Pad Thai" => "A popular Thai stir-fried rice noodle dish typically featuring shrimp or chicken, tofu, peanuts, bean sprouts, and a tangy tamarind sauce. (Techniques: stir-frying, sauce balancing).",
+    "Chicken Tikka Masala" => "An iconic Indian-British dish where marinated, grilled chicken pieces are served in a rich, creamy, and spiced tomato sauce. (Techniques: marinating, grilling/broiling, simmering sauce).",
+    "Sourdough Bread (Basic Loaf)" => "A foundational baking recipe requiring the use of a sourdough starter, long fermentation, and specific kneading and baking techniques. (Techniques: leavening, fermentation, high-heat baking).",
+    "New York Cheesecake" => "A dense, smooth, and creamy dessert baked on a graham cracker crust, often using a water bath for even cooking. (Techniques: crust making, precision baking, chilling/setting).",
+    "French Onion Soup (Soupe à l'Oignon Gratinée)" => "A deep, savory beef broth soup featuring slow-caramelized onions, topped with a large crouton and melted Gruyère cheese. (Techniques: slow caramelization, stock reduction, broiling/gratinéing).",
+    "Spicy Black Bean Burgers" => "A vegetarian alternative that requires making a patty binder (often oats or breadcrumbs) and balancing the texture before pan-frying or baking. (Techniques: food processing/mixing, pan-frying/baking).",
+    "Authentic Paella Valenciana" => "A Spanish rice dish cooked in a wide, shallow pan, incorporating chicken, rabbit, vegetables, saffron, and a key technique for achieving the crunchy bottom layer ('socarrat'). (Techniques: simmering, specialized heat management).",
+    "Basic Vinaigrette Dressing" => "A foundational recipe showing the precise ratio and emulsification technique required to blend oil, vinegar, and seasonings. (Techniques: emulsification, whisking).",
+    "Slow-Cooker Pulled Pork" => "A hands-off recipe detailing the rub application, cooking time, and shredding technique to achieve tender, barbecue-ready pork shoulder. (Techniques: slow cooking/braising, dry rub application)."
   }
 
 
 def create_recipe_with_ingredients_and_steps(name, desc)
-  nr = Recipe.create(name: name, description: desc, sources: "https://randomblog.com/#{name}")
+  new_recipe = Recipe.create(name: name, description: desc, sources: "https://randomblog.com/#{name}")
 
   10.times do
-    create_ingredient(nr)
+    create_ingredient(new_recipe)
   end
-  create_steps(nr)
+  create_steps(new_recipe)
 end
 
 def create_ingredient(recipe)
