@@ -67,3 +67,4 @@ end
 gem "rspec-rails", "~> 8.0"
 
 gem "devise", "~> 4.9"
+gem "friendly_id", "~> 5.5.0" # we use this to generate user friendly slugs for recipes

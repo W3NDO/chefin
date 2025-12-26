@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(:ingredients, :steps).find(params[:id])
+    @recipe = Recipe.friendly.includes(:ingredients, :steps).find(params[:id])
     @ingredients = @recipe.ingredients.map { |i| i }
 
     @steps = @recipe.steps
