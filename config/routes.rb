@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   authenticated :user do
     resources :recipes
+    resources :ingredients, only: [ :new, :destroy, :update ]
+    resources :steps, only: [ :new, :destroy, :update ]
     get "cooking_session/show"
   end
 

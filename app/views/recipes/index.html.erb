@@ -1,6 +1,7 @@
 <div class="container w-full">
-  <div class="w-full flex flex-col justify-around">
+  <div class="w-full flex justify-between ">
     <h1 class="font-bold text-center text-4xl text-white">My Recipes</h1>
+    <%= link_to "+ Create a new recipe", :new_recipe, class: "font-bold text-center text-2xl bg-white p-2 rounded-lg "%>
   </div>
 
   <% unless @recipes.empty? %>

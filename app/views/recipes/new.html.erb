@@ -1,0 +1,25 @@
+<div class="w-full flex-col justify-around">
+
+  <%= form_for :recipe, url: "/recipes", class: "w-full flex flex-col justify-around px-5"  do |r| %>
+    <div class="flex flex-col w-full m-2">
+      <%= r.label "recipe name", class: "w-full text-white text-lg" %>
+      <%= r.text_field :name, class: "bg-white p-2 rounded-xl"%>
+    </div>  
+
+    
+    <%= r.fields_for :ingredients do |ingredients_form| %>
+        <%= render partial: "ingredients/form", locals: {ingredient: ingredients_form }%>
+    <% end %>
+    <%= link_to "+ Add Ingredient", new_ingredient_path, data: { turbo_stream: true }, type: "button", class: "bg-white p-2 rounded-lg w-40 mx-2" %>
+    
+    <div class="flex flex-col w-full m-2">
+      <%= r.fields_for :steps do |steps_form| %>
+          <%= steps_form.label "First step", class: "w-full text-white text-lg" %>
+          <%= steps_form.text_field :name, class: "bg-white  p-2 rounded-xl"%>
+      <% end %>
+    </div>
+
+    <%= r.submit %>
+  <% end %>
+
+</div>
