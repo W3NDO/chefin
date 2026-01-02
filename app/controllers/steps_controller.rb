@@ -4,6 +4,10 @@ class StepsController < ApplicationController
     @step
   end
 
+  def new
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+  end
+
   def create
   end
 
@@ -11,5 +15,10 @@ class StepsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def step_params
+    params.require(:step).permit(:step_number, :duration, :duration_unit, :pre_requisite_steps, :instruction)
   end
 end

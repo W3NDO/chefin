@@ -7,12 +7,11 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    puts params
+    @recipe = Recipe.new(**recipe_params, user_id: current_user.id)
 
     respond_to do |format|
-      if @project.save
-        format.html { redirect_to project_url(@recipe), notice: "Recipe was successfully created." }
+      if @recipe.save
+        format.html { redirect_to new_recipe_ingredient_url(recipe_id: @recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }

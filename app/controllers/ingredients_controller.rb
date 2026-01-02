@@ -5,12 +5,25 @@ class IngredientsController < ApplicationController
     @ingredients
   end
 
-  def create
-  end
+
 
   def new
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+  end
+
+  def create
+    @ingredient = Ingredient.new(ingredient_params)
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @ingredient.recipe = @recipe
+
     respond_to do |format|
-      format.turbo_stream
+      if @ingredient.save
+        format.html { redirect_to new_recipe_ingredient_url(recipe_id: @recipe), notice: "Ingredient for #{@recipe.name} was successfully created." }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -26,5 +39,10 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       format.turbo_stream
     end
+  end
+
+  private
+  def ingredient_params
+    params.require(:ingredient).permit(:name, :amount, :amount_unit, :alternative)
   end
 end

@@ -4,22 +4,20 @@
     <div class="flex flex-col w-full m-2">
       <%= r.label "recipe name", class: "w-full text-white text-lg" %>
       <%= r.text_field :name, class: "bg-white p-2 rounded-xl"%>
-    </div>  
-
-    
-    <%= r.fields_for :ingredients do |ingredients_form| %>
-        <%= render partial: "ingredients/form", locals: {ingredient: ingredients_form }%>
-    <% end %>
-    <%= link_to "+ Add Ingredient", new_ingredient_path, data: { turbo_stream: true }, type: "button", class: "bg-white p-2 rounded-lg w-40 mx-2" %>
-    
-    <div class="flex flex-col w-full m-2">
-      <%= r.fields_for :steps do |steps_form| %>
-          <%= steps_form.label "First step", class: "w-full text-white text-lg" %>
-          <%= steps_form.text_field :name, class: "bg-white  p-2 rounded-xl"%>
-      <% end %>
     </div>
 
-    <%= r.submit %>
+    <div class="flex flex-col w-full m-2">
+      <%= r.label "description", class: "w-full text-white text-lg" %>
+      <%= r.text_area :description, class: "bg-white p-2 rounded-xl h-40"%>
+    </div>
+
+    <div class="flex flex-col w-full m-2">
+      <%= r.label "sources", class: "w-full text-white text-lg" %>
+      <%= r.text_field :sources, class: "bg-white p-2 rounded-xl"%>
+    </div>
+
+    <%= r.submit "Add Ingredients", class: "bg-blue-500 p-2 rounded-lg w-40 mx-2 " %>
+
   <% end %>
 
 </div>

@@ -8,6 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+user = User.create!(email: "foobar@example.com", password: "foobar123", password_confirmation: "foobar123")
+
+
 RANDOM_RECIPES = name_desc = {
     "Classic Beef Lasagna" => "A layered Italian dish involving pasta sheets, rich meat sauce (ragu), béchamel sauce, and mozzarella and ricotta cheeses. (Techniques: sauce making, layering, baking).",
     "Homemade Pad Thai" => "A popular Thai stir-fried rice noodle dish typically featuring shrimp or chicken, tofu, peanuts, bean sprouts, and a tangy tamarind sauce. (Techniques: stir-frying, sauce balancing).",
@@ -22,8 +25,8 @@ RANDOM_RECIPES = name_desc = {
   }
 
 
-def create_recipe_with_ingredients_and_steps(name, desc)
-  new_recipe = Recipe.create(name: name, description: desc, sources: "https://randomblog.com/#{name}")
+def create_recipe_with_ingredients_and_steps(name, desc, user)
+  new_recipe = Recipe.create!(name: name, description: desc, sources: "https://randomblog.com/#{name}", user_id: user.id)
 
   10.times do
     create_ingredient(new_recipe)
@@ -33,7 +36,7 @@ end
 
 def create_ingredient(recipe)
   names = [ "flour", "sugar", "olive oil", "butter", "cheese" ]
-  ig = Ingredient.create(name: names.sample, amount: [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].sample, amount_unit: [ :liters, :ounces, :grams, :gallons, :cups, :teaspoons, :tablespoons ].sample, recipe_id: recipe.id)
+  Ingredient.create!(name: names.sample, amount: [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].sample, amount_unit: [ :liters, :ounces, :grams, :gallons, :cups, :teaspoons, :tablespoons ].sample, recipe_id: recipe.id)
 end
 
 def create_steps(recipe)
@@ -46,7 +49,7 @@ def create_steps(recipe)
 ]
 
   steps = steps.each_with_index do |step, idx|
-    Step.create(instruction: step, step_number: idx, duration: [ nil, 10, 30, 40 ].sample, duration_unit: [ :minutes, :hours, :days ].sample, recipe_id: recipe.id)
+    Step.create!(instruction: step, step_number: idx, duration: [ nil, 10, 30, 40 ].sample, duration_unit: [ :minutes, :hours, :days ].sample, recipe_id: recipe.id)
   end
 
   steps
@@ -54,7 +57,6 @@ end
 
 
 RANDOM_RECIPES.each do |name, desc|
-  create_recipe_with_ingredients_and_steps(name, desc)
+  create_recipe_with_ingredients_and_steps(name, desc, user)
+  pp "created new recipe"
 end
-
-User.create(email: "foobar@example.com", password: "foobar123", password_confirmation: "foobar123")

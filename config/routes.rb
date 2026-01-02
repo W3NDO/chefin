@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    resources :recipes
-    resources :ingredients, only: [ :new, :destroy, :update ]
-    resources :steps, only: [ :new, :destroy, :update ]
+    resources :recipes do
+      resources :ingredients, only: [ :new, :create, :destroy, :update ]
+      resources :steps, only: [ :new, :create, :destroy, :update ]
+    end
     get "cooking_session/show"
   end
 

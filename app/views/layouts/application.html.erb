@@ -30,7 +30,15 @@
 
       <ul class="w-full flex justify-end">
         <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Home", :root %> </li>
-        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", :recipes %> </li>
+        
+        <% if current_user %>
+          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", :recipes %> </li>
+        <% end %>
+
+        <% unless current_user %>
+          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Log In", :new_user_session %> </li>
+        <% end %>
+
         <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Discover", "#" %> </li>
       </ul>
 
@@ -47,8 +55,7 @@
           <p class="font-semibold text-white">Made with love</p>
           <div class="h-4"></div>
           <p class="font-serif text-white">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Delectus labor.
+              We are a group of people who share the joy of cooking.
           </p>
         </div>
         <div>
@@ -63,8 +70,7 @@
           <p class="font-semibold text-white">Share your favourite recipes</p>
           <div class="h-4"></div>
           <p class="font-serif text-white">
-              Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-              amet consectetur.
+              IJoin other chefs around the world by putting up your own recipes.
           </p>
         </div>
       </div>
