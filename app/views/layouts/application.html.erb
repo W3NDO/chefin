@@ -21,10 +21,59 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <body class="bg-blue-900 ">
+    <nav class="w-full flex justify-between mb-6">
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+      <div class="px-2 py-4 font-bold">
+        <h1 class="font-pacifico text-white text-3xl"> Chefin </h1>
+      </div>
+
+      <ul class="w-full flex justify-end">
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Home", :root %> </li>
+        
+        <% if current_user %>
+          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", :recipes %> </li>
+        <% end %>
+
+        <% unless current_user %>
+          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Log In", :new_user_session %> </li>
+        <% end %>
+
+        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Discover", "#" %> </li>
+      </ul>
+
+    </nav>
+
+    <main class="container mx-auto mt-10 px-5 flex h-full max-h-full">
       <%= yield %>
     </main>
+
+    <footer class=" w-full m-auto py-5 flex justify-center">
+      <div class="h-8"></div>
+      <div class="grid gap-6 pt-8 border-t border-gray-800 lg:grid-cols-3">
+        <div>
+          <p class="font-semibold text-white">Made with love</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              We are a group of people who share the joy of cooking.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">It's easy to start</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+              amet consectetur.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">Share your favourite recipes</p>
+          <div class="h-4"></div>
+          <p class="font-serif text-white">
+              IJoin other chefs around the world by putting up your own recipes.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
-</html>
+

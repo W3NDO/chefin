@@ -1,0 +1,31 @@
+<div class="flex flex-col justify-around w-full" >
+    <div class="flex justify-around w-full"> 
+        <div class="">
+            <p class="text-2xl text-white"> <%= @recipe.name %> </p>
+            <p> 🔗 Read description </p>
+        </div>
+
+        <% if @recipe.belongs_to_user?(current_user) %>
+            <div>
+                <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400" %>
+            </div>
+        <% end %>
+
+        <div class="justify-around">
+            <%= link_to "Start cooking along", :cooking_session_show, class: "p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400" %>
+        </div>
+    </div>
+
+    <hr class="m-2"/>
+    <div>
+        <span class="text-xl text-white font-bold"> Required Ingredients </span>
+        <%= render partial: "ingredients_checklist", locals: {ingredients: @ingredients} %>
+    </div>
+
+    <hr class="m-2"/>
+    <div>
+        <span class="text-xl text-white font-bold"> Steps </span>
+        <%= render partial: "steps_checklist", locals: {steps: @steps} %>
+    </div>
+    
+</div>

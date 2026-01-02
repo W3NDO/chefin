@@ -1,0 +1,14 @@
+<div class="w-full m-2">
+    <% ingredients.each do |ingredient|  %>
+        <div class="w-full p-2 flex justify-start">
+            <div class="w-full flex justify-between items-center">
+                <div>
+                    <p class="text-white text-xl px-2"> <%= "#{ingredient.amount} #{ingredient.amount > 1 ? ingredient.amount_unit.pluralize : ingredient.amount_unit.singularize } of #{ingredient.name}" %> </p>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-xl px-2"> Alternative: <%= ingredient.alternative %> </p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

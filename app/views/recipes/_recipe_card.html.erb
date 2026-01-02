@@ -1,0 +1,19 @@
+<div class="w-72 max-w-72 rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 hover:shadow-md transition-shadow p-2 m-2">
+  <!-- Image -->
+  <div class="h-40 w-full bg-gray-100 overflow-hidden">
+    <%= image_tag "https://picsum.photos/200",
+        alt: "#{recipe.name} photo",
+        class: "h-full w-full object-cover" %>
+  </div>
+
+  <!-- Content -->
+  <div class="p-4 space-y-2 w-full max-w-full">
+    <%= link_to recipe do %>
+        <p class="text-base font-semibold text-gray-900 leading-snug wrap-break-words w-1/2"> 🔗 <%= recipe.name[..30] %> </p>
+    <% end %>
+
+    <p class="text-sm text-gray-600 truncate">
+      <%= recipe.description[..30] %>
+    </p>
+  </div>
+</div>

@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  authenticated :user do
+    resources :recipes do
+      resources :ingredients, only: [ :new, :create, :destroy, :update ]
+      resources :steps, only: [ :new, :create, :destroy, :update ]
+    end
+    get "cooking_session/show"
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +20,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "home#index"
 end
