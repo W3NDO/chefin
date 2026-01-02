@@ -28,6 +28,7 @@ class IngredientsController < ApplicationController
   end
 
   def update
+    @ingredients = Ingredient.find(params[:id])
   end
 
   def destroy

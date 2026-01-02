@@ -30,7 +30,13 @@ class RecipesController < ApplicationController
     @steps = @recipe.steps
   end
 
+
+  def edit
+    @recipe = Recipe.friendly.includes(:steps, :ingredients).find(params[:id])
+  end
+
   def update
+    @recipe = Recipe.friendly.includes(:steps, :ingredients).find(params[:id])
   end
 
   def destroy
