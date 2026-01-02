@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
 
-  def belongs_to_user?
-    self.user_id == current_user.id
+  def belongs_to_user?(user)
+    self.user_id == user.id
   end
 end

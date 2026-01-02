@@ -22,7 +22,7 @@ class IngredientsController < ApplicationController
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
   end

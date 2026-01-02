@@ -5,10 +5,24 @@ class StepsController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @recipe = Recipe.friendly.includes(:steps).find(params[:recipe_id])
+    @step_number = @recipe.steps.size
   end
 
   def create
+    @step = Step.new(step_params)
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @step.recipe = @recipe
+
+    respond_to do |format|
+      if @step.save
+        format.html { redirect_to new_recipe_step_url(recipe_id: @recipe), notice: "Step for #{@recipe.name} was successfully created." }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @step.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

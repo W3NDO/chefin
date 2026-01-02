@@ -1,8 +1,8 @@
-<%= form_with step: step do |step| %>
+<%= form_for :step, url: "/recipes/#{@recipe.slug}/steps" do |step| %>
     <%= step.hidden_field :recipe_id, value: @recipe.id %>
     <div class="flex flex-col w-full m-2">
         <%= step.label "Step Number", class: "w-full text-white text-lg" %>
-        <%= step.text_field :step_number, required: true, class: "bg-white p-2 rounded-xl"%>
+        <%= step.text_field :step_number, required: true, value: @step_number+1, class: "bg-white p-2 rounded-xl"%>
     </div>
 
     <div class="flex flex-col w-full m-2">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="flex flex-col w-full m-2">
-         <%= step.label "Duration", class: "w-full text-white text-lg" %>
+        <%= step.label "Duration", class: "w-full text-white text-lg" %>
         <%= step.text_field :duration, placeholder: "leave blank if it is not a consideration", class: "bg-white p-2 rounded-xl"%>
         <div class="m-2">
             <ul class="items-center w-full text-sm font-medium text-heading bg-neutral-primary-soft border border-default rounded-lg sm:flex">
@@ -35,6 +35,7 @@
 
     <div class="flex justify-between w-full m-2">
         <%= step.submit "+ Save step", class: "bg-blue-500 p-2 rounded-lg w-90 mx-2" %>
+        <%= link_to "Go to the Recipe", recipe_path(@recipe), class: "text-center bg-blue-500 p-2 rounded-lg w-90 mx-2" %>
         <%= link_to "+ Add another ingredient to the recipe", new_recipe_ingredient_path(@recipe), class: "bg-blue-500 p-2 rounded-lg w-90 mx-2 text-center" %>
     </div>
 <% end %>

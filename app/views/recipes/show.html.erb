@@ -5,6 +5,12 @@
             <p> 🔗 Read description </p>
         </div>
 
+        <% if @recipe.belongs_to_user?(current_user) %>
+            <div>
+                <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400" %>
+            </div>
+        <% end %>
+
         <div class="justify-around">
             <%= link_to "Start cooking along", :cooking_session_show, class: "p-2 rounded-md text-white text-xl active:bg-purple-800 bg-blue-400" %>
         </div>
