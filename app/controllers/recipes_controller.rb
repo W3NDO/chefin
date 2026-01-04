@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [ :index ]
   before_action :set_recipe, only: %i[ show update update destroy ]
   def index
-    @recipes = Recipe.all.reverse
+    @recipes = Recipe.friendly.includes(:tags).all.reverse
     @recipes
   end
 

@@ -1,0 +1,7 @@
+<div class="flex flex-wrap">
+    <% tags.each do |tag| %>
+        <%= link_to tag_path( tag.slug ), class: "py-1 px-2 bg-gray-500 text-white mx-2 my-1 rounded-sm" do  %>
+            <%= "🏷️ #{ tag.tag_name.humanize }" %>
+          <% end %>
+    <% end %>
+</div>

@@ -5,9 +5,13 @@ Rails.application.routes.draw do
     resources :recipes do
       resources :ingredients, only: [ :new, :create, :destroy, :update ]
       resources :steps, only: [ :new, :create, :destroy, :update ]
+      resources :tags, only: [ :index, :show, :create ]
     end
     get "cooking_session/show"
   end
+
+  resources :recipes, only: [ :index, :show ]
+  resources :tags, only: [ :index, :show ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

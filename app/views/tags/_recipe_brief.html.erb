@@ -1,9 +1,8 @@
-<div class="w-72 max-w-72 rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 hover:shadow-md transition-shadow p-2 m-2">
-  <!-- Image -->
-  <div class="h-40 w-full bg-gray-100 overflow-hidden">
+<div class="w-full rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 hover:shadow-md transition-shadow p-2 m-2 flex">
+  <div class="h-40 w-40 bg-gray-100 overflow-hidden mx-2">
     <%= image_tag "https://picsum.photos/200",
         alt: "#{recipe.name} photo",
-        class: "h-full w-full object-cover" %>
+        class: "h-full w-full object-cover rounded-md" %>
   </div>
 
   <!-- Content -->
@@ -12,7 +11,7 @@
         <p class="text-base font-semibold text-gray-900 leading-snug wrap-break-words w-1/2"> 🔗 <%= recipe.name[..30] %> </p>
     <% end %>
 
-    <p class="text-sm text-gray-600 truncate">
+    <p class="text-sm text-gray-600 overflow-wrap">
       <%= recipe.description %>
     </p>
 

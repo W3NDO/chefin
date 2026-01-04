@@ -9,7 +9,27 @@
 #   end
 
 user = User.create!(email: "foobar@example.com", password: "foobar123", password_confirmation: "foobar123")
+user2 = User.create!(email: "foobar2@example.com", password: "foobar123", password_confirmation: "foobar123")
+user3 = User.create!(email: "foobar3@example.com", password: "foobar123", password_confirmation: "foobar123")
 
+RECIPE_TAGS = [
+  "Vegetarian",
+  "Vegan",
+  "Gluten-Free",
+  "Quick & Easy",
+  "30-Minute Meals",
+  "Healthy",
+  "Comfort Food",
+  "Keto-Friendly",
+  "One-Pot",
+  "Meal Prep",
+  "High-Protein",
+  "Low-Carb",
+  "Budget-Friendly",
+  "Kid-Friendly",
+  "Seasonal",
+  "Demo"
+]
 
 RANDOM_RECIPES = name_desc = {
     "Classic Beef Lasagna" => "A layered Italian dish involving pasta sheets, rich meat sauce (ragu), béchamel sauce, and mozzarella and ricotta cheeses. (Techniques: sauce making, layering, baking).",
@@ -24,9 +44,24 @@ RANDOM_RECIPES = name_desc = {
     "Slow-Cooker Pulled Pork" => "A hands-off recipe detailing the rub application, cooking time, and shredding technique to achieve tender, barbecue-ready pork shoulder. (Techniques: slow cooking/braising, dry rub application)."
   }
 
+def create_tags
+  RECIPE_TAGS.each do |tag|
+    Tag.create!(tag_name: tag)
+  end
+end
+
+# Build the basic tags
+create_tags
+
+def get_random_tag
+  Tag.friendly.find_by(tag_name: RECIPE_TAGS.sample.downcase)
+end
+
 
 def create_recipe_with_ingredients_and_steps(name, desc, user)
   new_recipe = Recipe.create!(name: name, description: desc, sources: "https://randomblog.com/#{name}", user_id: user.id)
+  new_recipe.tags = [ get_random_tag ]
+
 
   10.times do
     create_ingredient(new_recipe)
