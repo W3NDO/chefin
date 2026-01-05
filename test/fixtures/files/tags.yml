@@ -1,0 +1,14 @@
+vegan:
+  tag_name: vegan
+  slug: vegan
+  recipes: goulash
+
+gluten_free:
+  tag_name: gluten-free
+  slug: gluten-free
+  recipes: goulash
+
+keto:
+  tag_name: keto
+  slug: keto
+  recipes: goulash

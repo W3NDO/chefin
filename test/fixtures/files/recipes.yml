@@ -1,0 +1,11 @@
+goulash:
+  name: Hungarian Goulash
+  user: stefan
+  slug: hungarian-goulash
+  tags: gluten_free
+
+soufflé:
+  name: Cheese Soufflé
+  user: julia
+  slug: cheese-souffle
+  tags: keto

@@ -1,0 +1,14 @@
+seared_beef:
+  recipe: goulash
+  step_number: 1
+  instruction: Sear the beef cubes until brown on all sides.
+  duration: 15
+  duration_unit: minutes
+
+simmer:
+  recipe: goulash
+  step_number: 2
+  instruction: Add broth and simmer on low heat.
+  duration: 3
+  duration_unit: hours
+  pre_requisite_steps: 1

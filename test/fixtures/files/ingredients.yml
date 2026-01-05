@@ -1,0 +1,11 @@
+beef:
+  name: Beef Chuck
+  amount: 800
+  amount_unit: grams
+  recipe: goulash
+
+onions:
+  name: Yellow Onions
+  amount: 3
+  amount_unit: tablespoons # Using your enum keys
+  recipe: goulash
