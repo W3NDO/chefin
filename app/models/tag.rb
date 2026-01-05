@@ -11,4 +11,8 @@ class Tag < ApplicationRecord
   def downcase_tag_name
     self.tag_name.downcase!
   end
+
+  def humanize_tag_name
+    self.tag_name.gsub("-", " ").humanize
+  end
 end
