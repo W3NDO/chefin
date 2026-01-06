@@ -1,4 +1,4 @@
-<div>
+<div class="w-full">
     <div class="w-full flex justify-around">
         <h1 class="px-2 py-1 my-2 bg-white text-2xl rounded-md "> Find Recipes by their tags </h1>
     </div>
@@ -8,12 +8,12 @@
             <input 
                 type="text" 
                 data-tag-search-target="query" 
-                data-action="debounce->tag-search#getTags" 
+                data-action="input->tag-search#getTags" 
                 placeholder="Search for a tag"
                 class="border border-white p-2 rounded-md w-90 mb-2 text-center text-white"
             >
         <% end %>
-    </div>
 
-    <%= render partial: "tags_list", locals: { tags: @tags } %>
+        <%= render partial: "tags_list", locals: { tags: @tags } %>
+    </div>
 </div>
