@@ -8,7 +8,7 @@
   <!-- Content -->
   <div class="p-4 space-y-2 w-full max-w-full">
     <%= link_to recipe do %>
-        <p class="text-base font-semibold text-gray-900 leading-snug wrap-break-words w-1/2"> 🔗 <%= recipe.name[..30] %> </p>
+        <p class="text-base font-semibold text-gray-900 leading-snug wrap-break-words w-4/5"> 🔗 <%= recipe.name %> by <span class="italic"> <%= recipe.get_recipe_author %> </span> </p>
     <% end %>
 
     <p class="text-sm text-gray-600 overflow-wrap">

@@ -1,16 +1,16 @@
 <div class="container w-full">
   <div class="w-full flex justify-between ">
-    <h1 class="font-bold text-center text-4xl text-white">My Recipes</h1>
-    <%= link_to "+ Create a new recipe", :new_recipe, class: "font-bold text-center text-2xl bg-white p-2 rounded-lg "%>
+    <h1 class="font-bold text-center text-lg ">My Recipes</h1>
+    <%= link_to "+ Create a new recipe", :new_recipe, class: "font-bold text-center text-lg bg-gray-400 text-white p-2 rounded-lg "%>
   </div>
 
   <% unless @recipes.empty? %>
     <div class="flex justify-around w-full">
-      <h2 class="text-white text-2xl"> Recents </h2>
+      <h2 class=" text-2xl"> Recents </h2>
     </div>
 
   <div class="flex justify-around">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+    <div class="flex flex-col">
       <% @recipes.each do |recipe| %>
         <%= render partial: "recipe_card", locals: { recipe: recipe } %>
       <% end %>
@@ -20,10 +20,10 @@
   <% else %> 
     <div class="w-full flex flex-col justify-around">
       <div class="flex justify-around w-full">
-        <h2 class="text-white text-2xl"> You don't seem to have any recipes yet, let's fix that!!! </h2>
+        <h2 class=" text-2xl"> You don't seem to have any recipes yet, let's fix that!!! </h2>
       </div>
       <div class="flex justify-around w-full">
-        <%= link_to "New Recipe", :new_recipe, class: "p-2 rounded-md text-white text-xl active:bg-purple-500 bg-blue-400" %>
+        <%= link_to "New Recipe", :new_recipe, class: "p-2 rounded-md  text-xl active:bg-purple-500 bg-blue-400" %>
       </div>
     </div>
 

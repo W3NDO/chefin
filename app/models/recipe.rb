@@ -14,7 +14,9 @@ class Recipe < ApplicationRecord
     self.user_id == user.id
   end
 
+  # username for users would render this unnecessary
   def get_recipe_author
-    self.user.email.split("@").first.gsub(".", " ").humanize
+    self.user.email.split("@").first.gsub(".", " ").split().map { |name| name.humanize }.join(" ")
+    # converts "julia.child@example.com to Julia Child"
   end
 end

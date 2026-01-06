@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ 'tags' ]
 
   connect() {
-    window.StimulusUse.useDebounce(this, { wait: 1000 })
+    window.StimulusUse.useDebounce(this, { wait: 500 })
   }
 
   getTags(event) {
@@ -18,7 +18,6 @@ export default class extends Controller {
     );
 
     Object.keys(tag_ids).map( (key) => {
-      let existing_classlist = Array.from(document.getElementById(key).classList)
       if (!tag_ids[key].includes(search_term)){
         document.getElementById(key).classList.add("hidden")
       } else {

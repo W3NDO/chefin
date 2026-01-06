@@ -1,39 +1,38 @@
 <div>
-  <div class="h-32 md:h-40"></div>
+  <div class="h-16 md:h-40"></div>
 
-    <p class="font-sans text-4xl font-bold text-gray-200 max-w-5xl lg:text-7xl lg:pr-24 md:text-6xl">
+    <p class="text-4xl font-bold max-w-5xl lg:text-7xl lg:pr-24 md:text-6xl">
         Step by step assistance when following recipes!
     </p>
     <div class="h-10"></div>
     
-    <p class="max-w-2xl font-serif text-xl text-white md:text-2xl w-full text-center">
-        We give you an ingredient checklist and integrated timers for your recipes.
+    <p class="max-w-2xl text-lg text-black w-full text-center">
+        We give you an ingredient checklist and integrated timers for all your recipes.
     </p>
+
+    <div class="flex justify-around items-center m-auto">
+      <%= render partial: "sample_recipe", locals: { sample_recipe: @sample_recipe } %>
+    </div>
 
     <div class="flex justify-around items-center" >
       <% if @current_user %>
-        <%= link_to :root, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-blue-400" do %>
+        <%= link_to :root, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-gray-400" do %>
           My Recipes
         <% end %>
       <% else %>
-        <%= link_to :new_user_registration, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-blue-400" do %>
-          Get Started
-        <% end %>
+        <div class="flex w-ful justify-around">
+          <%= link_to :new_user_registration, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-gray-600" do %>
+            Sign up Today
+          <% end %>
+
+          <p class="mx-5 p-2 text-2xl"> or </p>
+
+          <%= link_to :tags, class:"p-2 rounded-md text-white text-2xl active:bg-purple-500 bg-gray-600" do %>
+            Discover New Recipes
+          <% end %>
+        </div>
 
       <% end %>
     </div>
-
-    <div class="grid gap-8 md:grid-cols-2">
-      <div class="flex flex-col justify-center">
-
-        <h2 class="text-4xl text-white font-bold py-5 ">Made for pros and learners</h2>
-        
-        <p class="font-serif text-xl text-white md:pr-10">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
-            autem, a recusandae vero praesentium qui impedit doloremque
-            molestias necessitatibus.
-        </p>
-      </div>
-  </div>
                 
 </div>

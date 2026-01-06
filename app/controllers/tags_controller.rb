@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.friendly.all
+    @tags = Tag.friendly.all.order(:slug)
   end
 
   def show

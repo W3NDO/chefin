@@ -2,18 +2,23 @@
 
   <%= form_for :recipe, url: "/recipes", class: "w-full flex flex-col justify-around px-5"  do |r| %>
     <div class="flex flex-col w-full m-2">
-      <%= r.label "recipe name", class: "w-full text-white text-lg" %>
-      <%= r.text_field :name, class: "bg-white p-2 rounded-xl"%>
+      <%= r.label "recipe name", class: "w-full text-lg" %>
+      <%= r.text_field :name, class: "border p-2 rounded-xl"%>
     </div>
 
     <div class="flex flex-col w-full m-2">
-      <%= r.label "description", class: "w-full text-white text-lg" %>
-      <%= r.text_area :description, class: "bg-white p-2 rounded-xl h-40"%>
+      <%= r.label "description", class: "w-full text-lg" %>
+      <%= r.text_area :description, class: "border p-2 rounded-xl h-40"%>
     </div>
 
     <div class="flex flex-col w-full m-2">
-      <%= r.label "sources", class: "w-full text-white text-lg" %>
-      <%= r.text_field :sources, class: "bg-white p-2 rounded-xl"%>
+      <%= r.label "sources", class: "w-full text-lg" %>
+      <%= r.text_field :sources, class: "border p-2 rounded-xl"%>
+    </div>
+
+    <div class="flex flex-col w-full m-2">
+      <%= r.label "Add Tag", class: "w-full text-lg" %>
+      <%= r.collection_select :tag_ids, @tags.order(:slug), :id, :tag_name, class: "border p-2 rounded-xl bg-gray-200"%>
     </div>
 
     <%= r.submit "Add Ingredients", class: "bg-blue-500 p-2 rounded-lg w-40 mx-2 " %>
