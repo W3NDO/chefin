@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [ :index ]
   before_action :set_recipe, only: %i[ show update update destroy ]
   def index
-    @recipes = Recipe.all.reverse
+    @recipes = Recipe.friendly.includes(:tags).where(user: current_user).all.reverse
     @recipes
   end
 
@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @tags = Tag.friendly.all
   end
 
   def show
@@ -30,7 +31,13 @@ class RecipesController < ApplicationController
     @steps = @recipe.steps
   end
 
+
+  def edit
+    @recipe = Recipe.friendly.includes(:steps, :ingredients).find(params[:id])
+  end
+
   def update
+    @recipe = Recipe.friendly.includes(:steps, :ingredients).find(params[:id])
   end
 
   def destroy
@@ -39,7 +46,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :sources, ingredients_attributes: [ :name, :amount, :amount_unit, :alternative ], steps_attributes: [ :step_number, :duration, :duration_unit, :pre_requisite_steps, :instruction ])
+    params.require(:recipe).permit(:name, :description, :sources, tag_ids: [])
   end
 
   def set_recipe

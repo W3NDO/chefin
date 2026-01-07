@@ -1,4 +1,8 @@
-<div>
-  <h1 class="font-bold text-4xl">Ingredients#update</h1>
-  <p>Find me in app/views/ingredients/update.html.erb</p>
+<div class="flex flex-col w-full justify-around">
+    <div>
+        <h1 class="text-2xl text-white w-full text-center"> <%= @recipe.name %> </h1>
+    </div>
+
+
+    <%= render partial: "form", locals: {ingredient: @ingredient} %>
 </div>

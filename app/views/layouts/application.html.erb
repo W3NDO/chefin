@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+    <script src="https://unpkg.com/stimulus-use/dist/index.umd.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag 'chefin logo.jpg' %>
 
     <%= yield :head %>
 
@@ -21,56 +24,57 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-blue-900 ">
+  <body class=" ">
     <nav class="w-full flex justify-between mb-6">
 
-      <div class="px-2 py-4 font-bold">
-        <h1 class="font-pacifico text-white text-3xl"> Chefin </h1>
+      <div class="px-2 py-4 flex  font-bold">
+        <%= image_tag("chefin logo.jpg", class: "w-10 mx-2") %>
+        <h1 class="font-pacifico text-3xl"> 
+          <%= link_to "Chefin", :root %> 
+        </h1>
       </div>
 
       <ul class="w-full flex justify-end">
-        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Home", :root %> </li>
+        <li class="items-center p-2 m-2 font-bold hover:underline"> <%= link_to "Home", :root, class: "align-middle" %> </li>
+
+        <li class="items-center py-2 m-2"> | </li>
         
         <% if current_user %>
-          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "My Recipes", :recipes %> </li>
+          <li class="items-center p-2 m-2 font-bold hover:underline"> <%= link_to "My Recipes", :recipes, class: "align-middle" %> </li>
         <% end %>
+
 
         <% unless current_user %>
-          <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Log In", :new_user_session %> </li>
+          <li class="items-center p-2 m-2 font-bold hover:underline"> <%= link_to "Log In", :new_user_session, class: "align-middle"%> </li>
         <% end %>
 
-        <li class="items-center align-middle p-2 m-2 font-bold text-white rounded-md hover:border hover:border-bottom "> <%= link_to "Discover", "#" %> </li>
+        <li class="items-center py-2 m-2"> | </li>
+
+        <li class="items-center p-2 m-2 font-bold hover:underline"> <%= link_to "Discover", tags_path, title: "Find new recipes from all over the world", class: "align-middle" %> </li>
       </ul>
 
     </nav>
 
-    <main class="container mx-auto mt-10 px-5 flex h-full max-h-full">
+    <main class="container mx-auto mt-10 px-5 flex justify-around h-full max-h-full">
       <%= yield %>
     </main>
 
     <footer class=" w-full m-auto py-5 flex justify-center">
       <div class="h-8"></div>
-      <div class="grid gap-6 pt-8 border-t border-gray-800 lg:grid-cols-3">
+      <div class="grid gap-6 pt-8 border-t border-gray-800 lg:grid-cols-2">
         <div>
-          <p class="font-semibold text-white">Made with love</p>
+          <p class="font-semibold  ">Made with love</p>
           <div class="h-4"></div>
-          <p class="font-serif text-white">
+          <p class="font-serif  ">
               We are a group of people who share the joy of cooking.
           </p>
         </div>
+
         <div>
-          <p class="font-semibold text-white">It's easy to start</p>
+          <p class="font-semibold  ">Share your favourite recipes</p>
           <div class="h-4"></div>
-          <p class="font-serif text-white">
-              Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-              amet consectetur.
-          </p>
-        </div>
-        <div>
-          <p class="font-semibold text-white">Share your favourite recipes</p>
-          <div class="h-4"></div>
-          <p class="font-serif text-white">
-              IJoin other chefs around the world by putting up your own recipes.
+          <p class="font-serif  ">
+              Join other chefs around the world by putting up your own recipes.
           </p>
         </div>
       </div>

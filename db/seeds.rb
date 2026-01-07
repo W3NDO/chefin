@@ -9,7 +9,26 @@
 #   end
 
 user = User.create!(email: "foobar@example.com", password: "foobar123", password_confirmation: "foobar123")
+user2 = User.create!(email: "gordon.ramsey@example.com", password: "foobar123", password_confirmation: "foobar123")
+user3 = User.create!(email: "julia.child@example.com", password: "foobar123", password_confirmation: "foobar123")
 
+RECIPE_TAGS = {
+  "Vegetarian" => "Recipes that exclude meat but may include dairy and eggs.",
+  "Vegan" => "Plant-based recipes entirely free of animal products.",
+  "Gluten-Free" => "Meals prepared without wheat, barley, rye, or gluten-containing ingredients.",
+  "Quick & Easy" => "Simple recipes that require minimal prep and effort.",
+  "30-Minute Meals" => "Dishes that can be prepared and served in half an hour or less.",
+  "Healthy" => "Nutrient-dense meals focused on wholesome ingredients.",
+  "Comfort Food" => "Hearty, soul-warming dishes that feel like home.",
+  "Keto-Friendly" => "High-fat, low-carb recipes designed for a ketogenic lifestyle.",
+  "One-Pot" => "Convenient meals cooked entirely in a single pot or pan.",
+  "Meal Prep" => "Recipes ideal for cooking in bulk and storing for later.",
+  "High-Protein" => "Meals with a significant amount of protein per serving.",
+  "Low-Carb" => "Dishes that minimize carbohydrate intake.",
+  "Budget-Friendly" => "Inexpensive recipes that maximize value without sacrificing flavor.",
+  "Kid-Friendly" => "Approved by picky eaters; simple and approachable flavors.",
+  "Seasonal" => "Highlighting ingredients at their peak freshness during specific times of year."
+}
 
 RANDOM_RECIPES = name_desc = {
     "Classic Beef Lasagna" => "A layered Italian dish involving pasta sheets, rich meat sauce (ragu), béchamel sauce, and mozzarella and ricotta cheeses. (Techniques: sauce making, layering, baking).",
@@ -24,9 +43,24 @@ RANDOM_RECIPES = name_desc = {
     "Slow-Cooker Pulled Pork" => "A hands-off recipe detailing the rub application, cooking time, and shredding technique to achieve tender, barbecue-ready pork shoulder. (Techniques: slow cooking/braising, dry rub application)."
   }
 
+def create_tags
+  RECIPE_TAGS.each do |tag, desc|
+    Tag.create!(tag_name: tag, description: desc)
+  end
+end
+
+# Build the basic tags
+create_tags
+
+def get_random_tag
+  Tag.friendly.find_by(tag_name: RECIPE_TAGS.keys.sample.downcase)
+end
+
 
 def create_recipe_with_ingredients_and_steps(name, desc, user)
   new_recipe = Recipe.create!(name: name, description: desc, sources: "https://randomblog.com/#{name}", user_id: user.id)
+  new_recipe.tags = [ get_random_tag ]
+
 
   10.times do
     create_ingredient(new_recipe)
@@ -49,14 +83,15 @@ def create_steps(recipe)
 ]
 
   steps = steps.each_with_index do |step, idx|
-    Step.create!(instruction: step, step_number: idx, duration: [ nil, 10, 30, 40 ].sample, duration_unit: [ :minutes, :hours, :days ].sample, recipe_id: recipe.id)
+    Step.create!(instruction: step, step_number: idx+1, duration: [ nil, 10, 30, 40 ].sample, duration_unit: [ :minutes, :hours, :days ].sample, recipe_id: recipe.id)
   end
 
   steps
 end
 
-
+users = [ user, user2, user3 ]
 RANDOM_RECIPES.each do |name, desc|
+  user = users.sample
   create_recipe_with_ingredients_and_steps(name, desc, user)
-  pp "created new recipe"
+  pp "created new recipe for #{user.email}"
 end

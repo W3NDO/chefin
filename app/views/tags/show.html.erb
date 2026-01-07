@@ -1,0 +1,16 @@
+<div class="w-full justify-around">
+    <div class="w-full flex flex-col justify-around">
+        <h1 class="p-2 bg-white text-2xl rounded-md text-center m-auto "> Recipes Tagged: ' <%= @tag.humanize_tag_name %> ' </h1>
+        <p class="text-white m-auto p-2 my-2 text-center rounded-md"> <%= @tag.description %> </p>
+    </div>
+
+    <hr/>
+
+    <% unless @recipes.empty? %>
+        <% @recipes.each do |recipe| %>
+            <%= render partial: "recipe_brief", locals: { recipe: recipe } %>
+        <% end %>
+    <% else %>
+        <p class="w-full text-white text-center py-2"> <%= "Unfortunately we do not seem to have any recipes yet under the tag '#{ @tag.humanize_tag_name }'" %>  </p>
+    <% end %>
+</div>

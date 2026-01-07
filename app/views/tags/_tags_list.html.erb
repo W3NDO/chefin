@@ -1,0 +1,9 @@
+<div class="flex flex-wrap justify-center w-full">
+    <% if tags.size > 1 %>
+        <% tags.each do |tag| %>
+            <%= link_to tag_path( tag.slug ), class: "py-1 px-2 bg-gray-500 text-white mx-2 my-1 rounded-sm", title: "#{tag.description}",  data: { "tag-search-target": "tags" }, id: "#{tag.slug}" do  %>
+                <%= "🏷️ #{ tag.humanize_tag_name }" %>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>

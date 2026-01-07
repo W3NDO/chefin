@@ -1,0 +1,28 @@
+<div class="w-full rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 hover:shadow-md transition-shadow p-2 m-2 flex">
+  <div class="h-40 w-40 bg-gray-100 overflow-hidden mx-2">
+    <%= image_tag "https://picsum.photos/200",
+        alt: "#{recipe.name} photo",
+        class: "h-full w-full object-cover rounded-md" %>
+  </div>
+
+  <!-- Content -->
+  <div class="p-4 space-y-2 w-full max-w-full">
+    <%= link_to recipe do %>
+        <p class="text-base font-semibold text-gray-900 leading-snug wrap-break-words w-4/5"> 🔗 <%= recipe.name %> by <span class="italic"> <%= recipe.get_recipe_author %> </span> </p>
+    <% end %>
+
+    <p class="text-sm text-gray-600 overflow-wrap">
+      <%= recipe.description %>
+    </p>
+
+    <div class="flex flex-wrap">
+      <p class="text-sm text-white truncate p-1 rounded-md bg-gray-500 ">
+        <% recipe.tags.each do |tag| %>
+          <%= link_to tag_path( tag.slug ) do  %>
+            <%= "🏷️ #{ tag.tag_name.humanize }" %>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

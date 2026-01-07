@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_02_131902) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_06_135804) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -73,6 +73,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_02_131902) do
     t.index ["slug"], name: "index_recipes_on_slug", unique: true
   end
 
+  create_table "recipes_tags", id: false, force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "tag_id", null: false
+  end
+
   create_table "steps", force: :cascade do |t|
     t.integer "step_number", null: false
     t.integer "duration"
@@ -82,6 +87,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_02_131902) do
     t.datetime "updated_at", null: false
     t.integer "recipe_id", null: false
     t.text "instruction", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.text "description"
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

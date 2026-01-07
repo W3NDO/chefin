@@ -1,0 +1,26 @@
+<div class="flex flex-col justify-around w-full" >
+    <div>
+        <h1 class="text-2xl  w-full text-center"> <%= @recipe.name.humanize %> </h1>
+    </div>
+
+    <%= form_for @recipe, url: "/recipes", class: "w-full flex flex-col justify-around px-5"  do |r| %>
+        <div class="flex flex-col w-full m-2">
+            <%= r.label "recipe name", class: "w-full text-lg" %>
+            <%= r.text_field :name, class: "bg-white border p-2 rounded-xl" %>
+        </div>
+
+        <div class="flex flex-col w-full m-2">
+            <%= r.label "description", class: "w-full text-lg" %>
+            <%= r.text_area :description, class: "bg-white border p-2 rounded-xl h-40" %>
+        </div>
+
+        <div class="flex flex-col w-full m-2">
+            <%= r.label "sources", class: "w-full text-lg" %>
+            <%= r.text_field :sources, class: "bg-white border p-2 rounded-xl" %>
+        </div>
+
+        <%= r.submit "Save Changes", class: "bg-blue-500 text-white p-2 rounded-lg w-40 mx-2 " %>
+        <%= link_to "" :edit%>
+
+    <% end %>    
+</div>

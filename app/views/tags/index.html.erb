@@ -1,0 +1,19 @@
+<div class="w-full">
+    <div class="w-full flex justify-around">
+        <h1 class="px-2 py-1 my-2 text-2xl rounded-md "> Find Recipes by their tags </h1>
+    </div>
+
+    <div data-controller="tag-search">
+        <%= form_for :tag, class: "w-full flex justify-around my-2" do |f| %>
+            <input 
+                type="text" 
+                data-tag-search-target="query" 
+                data-action="input->tag-search#getTags" 
+                placeholder="Search for a tag"
+                class="border border-slate-300 p-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+        <% end %>
+
+        <%= render partial: "tags_list", locals: { tags: @tags } %>
+    </div>
+</div>
