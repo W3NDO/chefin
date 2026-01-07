@@ -72,7 +72,7 @@ RSpec.describe Recipe, type: :model do
   describe "#get_recipe_author" do
     it "extracts and formats the name from the user email" do
       recipe = Recipe.new(user: user) # Email is julia.child@example.com
-      expect(recipe.get_recipe_author).to eq("Julia child")
+      expect(recipe.get_recipe_author).to eq("Julia Child")
     end
 
     it "handles emails without dots correctly" do
