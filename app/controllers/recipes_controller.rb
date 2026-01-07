@@ -8,8 +8,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(**recipe_params, user_id: current_user.id)
-    tag = Tag.friendly.find(recipe_params[:tag_ids])
-    @recipe.tags = [ tag ]
 
     respond_to do |format|
       if @recipe.save

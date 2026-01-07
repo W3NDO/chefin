@@ -1,24 +1,38 @@
 <div class="w-full flex-col justify-around">
 
   <%= form_for :recipe, url: "/recipes", class: "w-full flex flex-col justify-around px-5"  do |r| %>
-    <div class="flex flex-col w-full m-2">
-      <%= r.label "recipe name", class: "w-full text-lg" %>
-      <%= r.text_field :name, class: "border p-2 rounded-xl"%>
+    <div class="flex flex-col gap-1.5 w-full max-w-md my-4">
+      <%= r.label "recipe name", class: "w-full text-md" %>
+      <%= r.text_field :name, class: "border border-slate-300 p-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"%>
     </div>
 
-    <div class="flex flex-col w-full m-2">
-      <%= r.label "description", class: "w-full text-lg" %>
-      <%= r.text_area :description, class: "border p-2 rounded-xl h-40"%>
+    <div class="flex flex-col gap-1.5 w-full max-w-md my-4">
+      <%= r.label "description", class: "w-full text-md" %>
+      <%= r.text_area :description, class: "border border-slate-300 p-2 rounded-xl h-40 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"%>
     </div>
 
-    <div class="flex flex-col w-full m-2">
-      <%= r.label "sources", class: "w-full text-lg" %>
-      <%= r.text_field :sources, class: "border p-2 rounded-xl"%>
+    <div class="flex flex-col gap-1.5 w-full max-w-md my-4">
+      <%= r.label "sources", class: "w-full text-md" %>
+      <%= r.text_field :sources, class: "border border-slate-300 p-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"%>
     </div>
 
-    <div class="flex flex-col w-full m-2">
-      <%= r.label "Add Tag", class: "w-full text-lg" %>
-      <%= r.collection_select :tag_ids, @tags.order(:slug), :id, :tag_name, class: "border p-2 rounded-xl bg-gray-200"%>
+    <div class="flex flex-col gap-1.5 w-full max-w-md my-4">
+      <%= r.label :tag_ids, "Add Tag", class: "text-md font-medium text-slate-700 ml-1" %>
+      
+      <%= r.collection_select :tag_ids, 
+          @tags.order(:slug), 
+          :id, 
+          :tag_name, 
+          {},
+          { 
+            multiple: true,
+            class: "w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 
+                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all 
+                    appearance-none cursor-pointer hover:bg-white" 
+          } 
+      %>
+                    
+      <p class="text-xs text-slate-500 ml-1">Select one or more categories for this recipe.</p>
     </div>
 
     <%= r.submit "Add Ingredients", class: "bg-blue-500 p-2 rounded-lg w-40 mx-2 " %>

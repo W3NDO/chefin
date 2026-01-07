@@ -8,7 +8,8 @@ class IngredientsController < ApplicationController
 
 
   def new
-    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @recipe = Recipe.friendly.includes(:ingredients).find(params[:recipe_id])
+    @ingredient_count = @recipe.ingredients.size
   end
 
   def create
@@ -28,7 +29,7 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    @ingredients = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
   end
 
   def destroy

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :recipes do
       resources :ingredients, only: [ :new, :create, :destroy, :update ]
       resources :steps, only: [ :new, :create, :destroy, :update ]
-      resources :tags, only: [ :index, :show, :create ]
+      resources :tags, only: [ :index, :show, :create, :update ]
     end
     get "cooking_session/show"
   end
