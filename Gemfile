@@ -66,7 +66,7 @@ end
 
 gem "rspec-rails", "~> 8.0"
 
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem "friendly_id", "~> 5.5.0" # we use this to generate user friendly slugs for recipes
 
 gem "dockerfile-rails", ">= 1.7", group: :development
